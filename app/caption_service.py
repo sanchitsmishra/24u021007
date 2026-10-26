@@ -193,6 +193,48 @@ class VideoCaptionService:
         finally:
             capture.release()
 
+    @staticmethod
+    def video_duration_seconds(video_path: Path) -> float:
+        """Return the playable duration, or 0 when the file has no readable timing."""
+        capture = cv2.VideoCapture(str(video_path))
+        if not capture.isOpened():
+            return 0.0
+        try:
+            frame_count = float(capture.get(cv2.CAP_PROP_FRAME_COUNT))
+            fps = float(capture.get(cv2.CAP_PROP_FPS))
+            if frame_count <= 0 or fps <= 0:
+                return 0.0
+            return frame_count / fps
+        finally:
+            capture.release()
+
+    @classmethod
+    def read_frame_at(cls, video_path: Path, timestamp_seconds: float) -> SampledFrame | None:
+        """Grab a single RGB frame near timestamp_seconds for periodic summaries."""
+        capture = cv2.VideoCapture(str(video_path))
+        if not capture.isOpened():
+            return None
+        try:
+            fps = float(capture.get(cv2.CAP_PROP_FPS))
+            if fps <= 0:
+                return None
+            frame_index = max(0, int(timestamp_seconds * fps))
+            capture.set(cv2.CAP_PROP_POS_FRAMES, frame_index)
+            ok, frame = capture.read()
+            if not ok:
+                return None
+            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            return SampledFrame(
+                timestamp_seconds=round(timestamp_seconds, 2),
+                image=Image.fromarray(rgb_frame),
+            )
+        finally:
+            capture.release()
+
+    def caption_still(self, image: Image.Image) -> str:
+        """Caption one still using the same BLIP + person-count path as scene analysis."""
+        return self._apply_person_count(self._caption_image(image), self._count_people(image))
+
     def _caption_image(self, image: Image.Image) -> str:
         self._ensure_model_loaded()
         assert self._model is not None and self._processor is not None

@@ -16,13 +16,27 @@ const videoPlayerSection = document.querySelector("#video-player-section");
 const videoPreview = document.querySelector("#video-preview");
 const narrationButton = document.querySelector("#narration-button");
 const narrationRate = document.querySelector("#narration-rate");
+const narrationMode = document.querySelector("#narration-mode");
+const narrationNote = document.querySelector("#narration-note");
 const audioDescriptions = document.querySelector("#audio-descriptions");
+const periodicSummariesList = document.querySelector("#periodic-summaries");
+const SPEECH_AWARE_NOTE = "Repeated views are combined, while meaningful new actions and visual changes are narrated directly. Descriptions play only in speech-free gaps. The video keeps playing; its volume is lowered during each clip, then restored.";
+const PERIODIC_NOTE = "Every 10 seconds the video pauses for a concise visual summary, then resumes automatically. This mode ignores dialogue so summaries still play during continuous speech.";
 const HISTORY_KEY = "video-caption-generator-history-v1";
+const NARRATION_TRIGGER_SECONDS = 0.35;
+const DUCKED_VOLUME = 0.2;
+const narrationAudio = new Audio();
+narrationAudio.preload = "auto";
 let activeDescriptions = [];
 let spokenDescriptionIndexes = new Set();
 let narrationEnabled = false;
 let previewUrl = null;
-let isDescriptionPause = false;
+let ducked = false;
+let volumeBeforeDuck = null;
+let userVolume = 1;
+let activeNarrationIndex = null;
+let periodicSummaries = [];
+let periodicHold = false;
 
 function getHistory() {
   try {
@@ -55,13 +69,122 @@ function saveToHistory(data) {
   renderHistory();
 }
 
+function isPeriodicMode() {
+  return narrationMode && narrationMode.value === "periodic";
+}
+
+function isPlayableClip(clip) {
+  return Boolean(clip && clip.audio_url && clip.scheduled_start_seconds != null && clip.duration_seconds > 0);
+}
+
+function isPlayablePeriodicClip(clip) {
+  return Boolean(clip && clip.audio_url && clip.duration_seconds > 0 && clip.segment_end_seconds != null);
+}
+
+function playableClipsForMode() {
+  return isPeriodicMode() ? periodicSummaries.filter(isPlayablePeriodicClip) : activeDescriptions.filter(isPlayableClip);
+}
+
+function updateModeUi() {
+  if (narrationNote) {
+    narrationNote.textContent = isPeriodicMode() ? PERIODIC_NOTE : SPEECH_AWARE_NOTE;
+  }
+  narrationButton.disabled = playableClipsForMode().length === 0;
+}
+
+function clipStart(clip) {
+  return clip.scheduled_start_seconds;
+}
+
+function restoreVideoVolume() {
+  if (!ducked) return;
+  videoPreview.volume = volumeBeforeDuck;
+  ducked = false;
+  volumeBeforeDuck = null;
+}
+
+function duckVideoVolume() {
+  if (ducked) return;
+  volumeBeforeDuck = videoPreview.volume;
+  ducked = true;
+  videoPreview.volume = Math.min(volumeBeforeDuck, DUCKED_VOLUME);
+}
+
+function shouldResumePausedNarration(state) {
+  return Boolean(
+    state.enabled &&
+      state.activeIndex != null &&
+      state.hasSource &&
+      !state.ended,
+  );
+}
+
+function shouldIgnoreNarrationPlayError(error) {
+  return Boolean(error && error.name === "AbortError");
+}
+
+function narrationHasSource() {
+  const src = narrationAudio.currentSrc || narrationAudio.getAttribute("src") || "";
+  return src.length > 0;
+}
+
+function pauseNarrationAudio() {
+  if (!narrationAudio.paused) {
+    narrationAudio.pause();
+  }
+}
+
+function stopNarrationAudio() {
+  narrationAudio.pause();
+  narrationAudio.removeAttribute("src");
+  narrationAudio.load();
+  activeNarrationIndex = null;
+  restoreVideoVolume();
+}
+
+function playNarrationAudio() {
+  const playAttempt = narrationAudio.play();
+  if (playAttempt && typeof playAttempt.catch === "function") {
+    playAttempt.catch((error) => {
+      if (shouldIgnoreNarrationPlayError(error)) return;
+      stopNarrationAudio();
+    });
+  }
+}
+
+function resumePausedNarration() {
+  if (
+    !shouldResumePausedNarration({
+      enabled: narrationEnabled,
+      activeIndex: activeNarrationIndex,
+      hasSource: narrationHasSource(),
+      ended: narrationAudio.ended,
+    })
+  ) {
+    return false;
+  }
+  playNarrationAudio();
+  return true;
+}
+
+function markPastClipsSpoken() {
+  spokenDescriptionIndexes = new Set(
+    activeDescriptions
+      .map((clip, index) => {
+        if (index === activeNarrationIndex) return null;
+        if (!isPlayableClip(clip)) return index;
+        return clipStart(clip) < videoPreview.currentTime - NARRATION_TRIGGER_SECONDS ? index : null;
+      })
+      .filter((index) => index !== null),
+  );
+}
+
 function showSelectedFile(file) {
   fileLabel.textContent = file ? file.name : "Choose a video";
-  window.speechSynthesis.cancel();
-  narrationEnabled = false;
+  stopNarration();
   narrationButton.disabled = true;
-  narrationButton.textContent = "Play with audio descriptions";
   activeDescriptions = [];
+  periodicSummaries = [];
   spokenDescriptionIndexes = new Set();
   if (previewUrl) URL.revokeObjectURL(previewUrl);
   if (file) {
@@ -96,52 +219,115 @@ function showResult(data) {
       return item;
     }),
   );
-  activeDescriptions = data.audio_descriptions;
+  activeDescriptions = data.audio_descriptions || [];
+  periodicSummaries = data.periodic_summaries || [];
   spokenDescriptionIndexes = new Set();
   audioDescriptions.replaceChildren(
-    ...activeDescriptions.map(({ timestamp_seconds: seconds, description }) => {
+    ...activeDescriptions.map((clip) => {
       const item = document.createElement("li");
-      item.textContent = `${seconds.toFixed(2)}s — ${description}`;
+      const start = clip.scheduled_start_seconds ?? clip.timestamp_seconds;
+      const skipped = isPlayableClip(clip) ? "" : " (text only)";
+      item.textContent = `${Number(start).toFixed(2)}s — ${clip.description}${skipped}`;
       return item;
     }),
   );
-  narrationButton.disabled = activeDescriptions.length === 0;
+  if (periodicSummariesList) {
+    periodicSummariesList.replaceChildren(
+      ...periodicSummaries.map((clip) => {
+        const item = document.createElement("li");
+        const skipped = isPlayablePeriodicClip(clip) ? "" : " (text only)";
+        item.textContent = `${Number(clip.segment_start_seconds).toFixed(2)}–${Number(clip.segment_end_seconds).toFixed(2)}s — ${clip.description}${skipped}`;
+        return item;
+      }),
+    );
+  }
+  updateModeUi();
   result.classList.remove("hidden");
   saveToHistory(data);
 }
 
 function stopNarration() {
   narrationEnabled = false;
-  isDescriptionPause = false;
-  window.speechSynthesis.cancel();
+  periodicHold = false;
+  stopNarrationAudio();
   narrationButton.textContent = "Play with audio descriptions";
 }
 
-function speakDueDescription() {
-  if (!narrationEnabled || window.speechSynthesis.speaking) return;
+function markPastPeriodicSummaries() {
+  spokenDescriptionIndexes = new Set(
+    periodicSummaries
+      .map((clip, index) => {
+        if (index === activeNarrationIndex) return null;
+        if (!isPlayablePeriodicClip(clip)) return index;
+        return clip.segment_end_seconds < videoPreview.currentTime - NARRATION_TRIGGER_SECONDS ? index : null;
+      })
+      .filter((index) => index !== null),
+  );
+}
+
+function finishPeriodicHold(resumeVideo) {
+  periodicHold = false;
+  activeNarrationIndex = null;
+  stopNarrationAudio();
+  if (!resumeVideo || !narrationEnabled || videoPreview.ended) {
+    if (videoPreview.ended || !narrationEnabled) stopNarration();
+    return;
+  }
+  videoPreview.play().catch(() => {
+    setStatus("Press play to continue after the visual summary.", true);
+  });
+}
+
+function startPeriodicHold(index) {
+  const clip = periodicSummaries[index];
+  spokenDescriptionIndexes.add(index);
+  activeNarrationIndex = index;
+  periodicHold = true;
+  videoPreview.pause();
+  if (!isPlayablePeriodicClip(clip)) {
+    finishPeriodicHold(true);
+    return;
+  }
+  narrationAudio.src = clip.audio_url;
+  playNarrationAudio();
+}
+
+function playDuePeriodicSummary() {
+  if (!narrationEnabled || !isPeriodicMode() || periodicHold) return;
+  if (videoPreview.paused && !videoPreview.ended) return;
+  const nextIndex = periodicSummaries.findIndex(
+    (clip, index) =>
+      isPlayablePeriodicClip(clip) &&
+      !spokenDescriptionIndexes.has(index) &&
+      clip.segment_end_seconds <= videoPreview.currentTime + NARRATION_TRIGGER_SECONDS,
+  );
+  if (nextIndex === -1) return;
+  startPeriodicHold(nextIndex);
+}
+
+function playDueDescription() {
+  if (isPeriodicMode()) return;
+  if (!narrationEnabled || videoPreview.paused) return;
+  if (activeNarrationIndex !== null) {
+    if (narrationAudio.paused) resumePausedNarration();
+    return;
+  }
+  if (!narrationAudio.paused) return;
   const nextIndex = activeDescriptions.findIndex(
-    ({ timestamp_seconds: seconds }, index) => !spokenDescriptionIndexes.has(index) && seconds <= videoPreview.currentTime + 0.35,
+    (clip, index) =>
+      isPlayableClip(clip) &&
+      !spokenDescriptionIndexes.has(index) &&
+      clipStart(clip) <= videoPreview.currentTime + NARRATION_TRIGGER_SECONDS &&
+      videoPreview.currentTime < clipStart(clip) + clip.duration_seconds,
   );
   if (nextIndex === -1) return;
 
-  const utterance = new SpeechSynthesisUtterance(activeDescriptions[nextIndex].description);
-  utterance.rate = Number(narrationRate.value);
-  utterance.volume = 1;
-  utterance.lang = "en-US";
+  const clip = activeDescriptions[nextIndex];
   spokenDescriptionIndexes.add(nextIndex);
-  isDescriptionPause = true;
-  videoPreview.pause();
-  const resumeVideo = () => {
-    isDescriptionPause = false;
-    if (narrationEnabled && !videoPreview.ended) {
-      videoPreview.play().catch(() => {
-        setStatus("Press play to continue the video after the description.", true);
-      });
-    }
-  };
-  utterance.onend = resumeVideo;
-  utterance.onerror = resumeVideo;
-  window.speechSynthesis.speak(utterance);
+  activeNarrationIndex = nextIndex;
+  narrationAudio.src = clip.audio_url;
+  duckVideoVolume();
+  playNarrationAudio();
 }
 
 fileInput.addEventListener("change", () => showSelectedFile(fileInput.files[0]));
@@ -175,34 +361,87 @@ narrationButton.addEventListener("click", async () => {
     return;
   }
   narrationEnabled = true;
-  spokenDescriptionIndexes = new Set(
-    activeDescriptions
-      .map(({ timestamp_seconds: seconds }, index) => (seconds < videoPreview.currentTime - 0.35 ? index : null))
-      .filter((index) => index !== null),
-  );
+  if (isPeriodicMode()) markPastPeriodicSummaries();
+  else markPastClipsSpoken();
   narrationButton.textContent = "Stop audio descriptions";
   try {
     await videoPreview.play();
-    speakDueDescription();
+    if (isPeriodicMode()) playDuePeriodicSummary();
+    else playDueDescription();
   } catch {
     setStatus("Press play on the video, then turn on audio descriptions.", true);
   }
 });
 
-videoPreview.addEventListener("timeupdate", speakDueDescription);
+if (narrationMode) {
+  narrationMode.addEventListener("change", () => {
+    stopNarration();
+    updateModeUi();
+  });
+}
+
+videoPreview.addEventListener("timeupdate", () => {
+  if (isPeriodicMode()) playDuePeriodicSummary();
+  else playDueDescription();
+});
+videoPreview.addEventListener("play", () => {
+  if (!narrationEnabled) return;
+  if (isPeriodicMode()) {
+    if (periodicHold) {
+      videoPreview.pause();
+      if (narrationAudio.paused) playNarrationAudio();
+    }
+    return;
+  }
+  if (resumePausedNarration()) return;
+  markPastClipsSpoken();
+  playDueDescription();
+});
 videoPreview.addEventListener("seeking", () => {
-  window.speechSynthesis.cancel();
-  isDescriptionPause = false;
-  spokenDescriptionIndexes = new Set(
-    activeDescriptions
-      .map(({ timestamp_seconds: seconds }, index) => (seconds < videoPreview.currentTime - 0.35 ? index : null))
-      .filter((index) => index !== null),
-  );
+  periodicHold = false;
+  stopNarrationAudio();
+});
+videoPreview.addEventListener("seeked", () => {
+  if (!narrationEnabled) return;
+  if (isPeriodicMode()) {
+    markPastPeriodicSummaries();
+    if (!videoPreview.paused) playDuePeriodicSummary();
+    return;
+  }
+  markPastClipsSpoken();
+  if (!videoPreview.paused) playDueDescription();
 });
 videoPreview.addEventListener("pause", () => {
-  if (!isDescriptionPause) window.speechSynthesis.cancel();
+  if (periodicHold) return;
+  pauseNarrationAudio();
 });
-videoPreview.addEventListener("ended", stopNarration);
+videoPreview.addEventListener("ended", () => {
+  if (isPeriodicMode() && narrationEnabled) {
+    playDuePeriodicSummary();
+    if (periodicHold) return;
+  }
+  stopNarration();
+});
+videoPreview.addEventListener("volumechange", () => {
+  if (!ducked) userVolume = videoPreview.volume;
+});
+narrationAudio.addEventListener("ended", () => {
+  if (isPeriodicMode() && periodicHold) {
+    const shouldResume = narrationEnabled && !videoPreview.ended;
+    finishPeriodicHold(shouldResume);
+    return;
+  }
+  activeNarrationIndex = null;
+  restoreVideoVolume();
+});
+narrationAudio.addEventListener("error", () => {
+  if (isPeriodicMode() && periodicHold) {
+    finishPeriodicHold(narrationEnabled && !videoPreview.ended);
+    return;
+  }
+  activeNarrationIndex = null;
+  restoreVideoVolume();
+});
 
 downloadButton.addEventListener("click", () => {
   const frameDetails = [...frameCaptions.querySelectorAll("li")]
@@ -211,7 +450,10 @@ downloadButton.addEventListener("click", () => {
   const narrationScript = [...audioDescriptions.querySelectorAll("li")]
     .map((item) => `- ${item.textContent}`)
     .join("\n");
-  const content = `Video Caption Generator\n\nCaption: ${captionHeading.textContent}\n${meta.textContent}\n\nAudio-description script:\n${narrationScript}\n\nDetected moments:\n${frameDetails}\n`;
+  const periodicScript = periodicSummariesList
+    ? [...periodicSummariesList.querySelectorAll("li")].map((item) => `- ${item.textContent}`).join("\n")
+    : "";
+  const content = `Video Caption Generator\n\nCaption: ${captionHeading.textContent}\n${meta.textContent}\n\nAudio-description script:\n${narrationScript}\n\nPeriodic visual summaries:\n${periodicScript}\n\nDetected moments:\n${frameDetails}\n`;
   const link = document.createElement("a");
   link.href = URL.createObjectURL(new Blob([content], { type: "text/plain" }));
   link.download = "video-caption-result.txt";
@@ -252,3 +494,4 @@ form.addEventListener("submit", async (event) => {
 });
 
 renderHistory();
+updateModeUi();

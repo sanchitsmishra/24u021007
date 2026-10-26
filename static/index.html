@@ -39,6 +39,12 @@
           <video id="video-preview" controls preload="metadata"></video>
           <div class="narration-controls">
             <button id="narration-button" class="secondary" type="button" disabled>Play with audio descriptions</button>
+            <label for="narration-mode">Mode
+              <select id="narration-mode">
+                <option value="speech-aware" selected>Speech-aware narration</option>
+                <option value="periodic">Periodic visual summaries</option>
+              </select>
+            </label>
             <label for="narration-rate">Narration speed
               <select id="narration-rate">
                 <option value="0.85">Slow</option>
@@ -47,7 +53,7 @@
               </select>
             </label>
           </div>
-          <p class="narration-note">Repeated views are combined, while meaningful new actions and visual changes are narrated directly. The video pauses while each description is spoken at the browser's maximum narration volume, then resumes automatically.</p>
+          <p id="narration-note" class="narration-note">Repeated views are combined, while meaningful new actions and visual changes are narrated directly. Descriptions play only in speech-free gaps. The video keeps playing; its volume is lowered during each clip, then restored.</p>
         </section>
 
         <section id="result" class="result hidden" aria-labelledby="caption-heading">
@@ -64,6 +70,10 @@
           <details class="audio-timeline" open>
             <summary>Audio-description script</summary>
             <ul id="audio-descriptions"></ul>
+          </details>
+          <details class="audio-timeline" id="periodic-summaries-section">
+            <summary>Periodic visual summaries</summary>
+            <ul id="periodic-summaries"></ul>
           </details>
         </section>
 

@@ -1,4 +1,5 @@
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 .env
@@ -6,3 +7,6 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 uploads/
+narration_clips/
+models/
+*.wav
