@@ -1,4 +1,4 @@
-# Video Caption Generator
+# Vocal Vision: Video Caption Generator
 
 A practical first prototype for **visual video captioning**:
 
