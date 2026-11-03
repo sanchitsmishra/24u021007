@@ -9,4 +9,10 @@ __pycache__/
 uploads/
 narration_clips/
 models/
+datasets/
+video-caption-generator-main/
 *.wav
+*.zip
+*.tar.gz
+*.avi
+*.mp4

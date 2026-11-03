@@ -1,0 +1,815 @@
+{
+  "dataset": "UCF-101",
+  "total_samples": 3783,
+  "scores": {
+    "Top-1 Action Accuracy (%)": 24.35,
+    "Top-5 Action Accuracy (%)": 30.74,
+    "Action Keyword Recall (%)": 33.94
+  },
+  "performance": {
+    "average_latency_sec": 0.82,
+    "device": "cuda"
+  },
+  "details": [
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.45
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman sitting in front of a computer.",
+      "top5_matched_actions": [
+        "FrontCrawl",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.48
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.67
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people with dark hair.",
+      "top5_matched_actions": [
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.47
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "The woman is wearing a camo jacket.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.5
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g01_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman sitting in front of a computer.",
+      "top5_matched_actions": [
+        "FrontCrawl",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.29
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g02_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting her makeup in front of a mirror.",
+      "top5_matched_actions": [
+        "FrontCrawl",
+        "ApplyEyeMakeup",
+        "CuttingInKitchen",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.36
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g02_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting her lipstick in front of a mirror.",
+      "top5_matched_actions": [
+        "ApplyLipstick",
+        "FrontCrawl",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.34
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g02_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.46
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g02_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Three people is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.33
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman holding a book in her hand.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.42
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.23
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.28
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.25
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman holding a knife in front of her face.",
+      "top5_matched_actions": [
+        "FrontCrawl",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.32
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g03_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.39
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.28
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people with long brown hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.29
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people getting her make up in front of a mirror.",
+      "top5_matched_actions": [
+        "FrontCrawl",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.28
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.3
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.27
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is putting makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.46
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g04_c07.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long brown hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.33
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.52
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman in a black shirt is pointing at the camera.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.51
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is doing makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.32
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.31
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long black hair and a black shirt.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "CleanAndJerk",
+        "WalkingWithDog",
+        "ApplyEyeMakeup"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.43
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman in a black shirt is making a face.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.33
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g05_c07.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman in a black shirt is looking up at the sky.",
+      "top5_matched_actions": [
+        "SkyDiving",
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.42
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman holding a brush in her right hand.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.37
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is doing makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.36
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long brown hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.41
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman holding a cell phone to her ear.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.41
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is doing makeup on her face.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "WritingOnBoard",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.75
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman getting her make - up done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.33
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g06_c07.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman with long brown hair.",
+      "top5_matched_actions": [
+        "LongJump",
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.94
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c01.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.57
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c02.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.51
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c03.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.41
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c04.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.42
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c05.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "Two people getting her makeup done by a man.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.41
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c06.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.48
+    },
+    {
+      "video_file": "v_ApplyEyeMakeup_g07_c07.avi",
+      "ground_truth_action": "ApplyEyeMakeup",
+      "predicted_caption": "A woman is getting her makeup done.",
+      "top5_matched_actions": [
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling",
+        "BalanceBeam"
+      ],
+      "top1_match": true,
+      "top5_match": true,
+      "action_keyword_hit": true,
+      "latency_seconds": 0.45
+    },
+    {
+      "video_file": "v_ApplyLipstick_g01_c01.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman with short hair.",
+      "top5_matched_actions": [
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.29
+    },
+    {
+      "video_file": "v_ApplyLipstick_g01_c02.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman with short brown hair.",
+      "top5_matched_actions": [
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.39
+    },
+    {
+      "video_file": "v_ApplyLipstick_g01_c03.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman with short brown hair.",
+      "top5_matched_actions": [
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.73
+    },
+    {
+      "video_file": "v_ApplyLipstick_g01_c04.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman with short brown hair.",
+      "top5_matched_actions": [
+        "BlowDryHair",
+        "WalkingWithDog",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.62
+    },
+    {
+      "video_file": "v_ApplyLipstick_g01_c05.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman in a black shirt is taking a picture of herself.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.62
+    },
+    {
+      "video_file": "v_ApplyLipstick_g02_c01.avi",
+      "ground_truth_action": "ApplyLipstick",
+      "predicted_caption": "A woman is looking at her reflection in the mirror.",
+      "top5_matched_actions": [
+        "CuttingInKitchen",
+        "ApplyEyeMakeup",
+        "ApplyLipstick",
+        "Archery",
+        "BabyCrawling"
+      ],
+      "top1_match": false,
+      "top5_match": false,
+      "action_keyword_hit": false,
+      "latency_seconds": 0.36
+    }
+  ]
+}

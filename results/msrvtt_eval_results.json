@@ -1,0 +1,569 @@
+{
+  "dataset": "MSR-VTT 1k-Test",
+  "total_samples": 1000,
+  "scores": {
+    "CIDEr": 0.33,
+    "BLEU-4": 15.42,
+    "BLEU-3": 24.03,
+    "BLEU-2": 37.69,
+    "BLEU-1": 55.41,
+    "METEOR": 41.03,
+    "ROUGE-L": 39.78
+  },
+  "performance": {
+    "average_latency_sec": 0.88,
+    "device": "cuda"
+  },
+  "details": [
+    {
+      "video_id": "video7020",
+      "filename": "video7020.mp4",
+      "prediction": "A montage featuring several different scenes, including two people is making a cake with green frosting.",
+      "references": [
+        "a person is preparing some art",
+        "a person making stuff out of clay",
+        "a woman  creating a fondant baby and flower",
+        "a woman constructing a sculpture with playdoh",
+        "a woman creates a baby out of craft supplies"
+      ],
+      "metrics": {
+        "BLEU-1": 36.27002392039251,
+        "BLEU-2": 20.022955475188986,
+        "BLEU-3": 6.208110538566538,
+        "BLEU-4": 3.507770215215251,
+        "ROUGE-L": 29.629629629629626,
+        "METEOR": 48.2695810564663,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 7.87
+    },
+    {
+      "video_id": "video7021",
+      "filename": "video7021.mp4",
+      "prediction": "A montage featuring several different scenes, including a group of people playing baseball in a field.",
+      "references": [
+        "a baseball batter hits the ball to the fence and a outfielder goes after it",
+        "a baseball game is played",
+        "a baseball game taking place",
+        "a baseball player hits a ball to the back of the field",
+        "a batter hitting a ball and players on a field"
+      ],
+      "metrics": {
+        "BLEU-1": 56.25,
+        "BLEU-2": 38.72983346207417,
+        "BLEU-3": 22.078916314809476,
+        "BLEU-4": 9.528070628428424,
+        "ROUGE-L": 30.76923076923077,
+        "METEOR": 51.74180327868852,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.78
+    },
+    {
+      "video_id": "video7024",
+      "filename": "video7024.mp4",
+      "prediction": "A little pony in a bathtub with a toy.",
+      "references": [
+        "a toy cat is bathing in soapy water in a toy bathtub",
+        "small plastic cat being washed and rubbed in a plastic tub",
+        "there is a someone playing with a deer toy",
+        "a person pretends to bathe a small plastic cat using a bathroom play set of equally small size",
+        "the head of doll is being washed by someone in soapy water"
+      ],
+      "metrics": {
+        "BLEU-1": 100.0,
+        "BLEU-2": 79.05694150420948,
+        "BLEU-3": 20.77831847097075,
+        "BLEU-4": 11.044795567078944,
+        "ROUGE-L": 44.44444444444444,
+        "METEOR": 47.01436130007558,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.67
+    },
+    {
+      "video_id": "video7025",
+      "filename": "video7025.mp4",
+      "prediction": "A montage featuring several different scenes, including a group of people sitting on top of a grass covered field.",
+      "references": [
+        "a boy running is running without dress",
+        "a child is running naked across the grass",
+        "a naked boy running on a beach then a picture of a man",
+        "a naked child runs through a field",
+        "a naked child runs through a field"
+      ],
+      "metrics": {
+        "BLEU-1": 47.368421052631575,
+        "BLEU-2": 22.941573387056174,
+        "BLEU-3": 6.783214647524083,
+        "BLEU-4": 3.7296611242667117,
+        "ROUGE-L": 30.76923076923077,
+        "METEOR": 31.16531165311653,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.82
+    },
+    {
+      "video_id": "video7026",
+      "filename": "video7026.mp4",
+      "prediction": "A montage featuring several different scenes, including a close up of a speedometer on a car.",
+      "references": [
+        "a guy talks about the features of the jeep cherokee",
+        "a man describing a car",
+        "a man in a car talking to a camera",
+        "a man is describing speed control features of a cherokee vehicle",
+        "a man is driving a car for review"
+      ],
+      "metrics": {
+        "BLEU-1": 37.5,
+        "BLEU-2": 27.386127875258303,
+        "BLEU-3": 8.14206874388783,
+        "BLEU-4": 4.505546423412899,
+        "ROUGE-L": 32.0,
+        "METEOR": 49.14529914529915,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.61
+    },
+    {
+      "video_id": "video7027",
+      "filename": "video7027.mp4",
+      "prediction": "A flat screen tv.",
+      "references": [
+        "there is graphics of the universe in blue showing in the tv",
+        "a screen with a man is sitting on a bench in a glimpse",
+        "a man is discussing how the program is loading up and if there are any problems or questions to message him",
+        "television screen with display of planet  earth and someone tells about it",
+        "the screen of tv shows the planet and someone describes it"
+      ],
+      "metrics": {
+        "BLEU-1": 36.787944117144235,
+        "BLEU-2": 21.23952943896613,
+        "BLEU-3": 9.409816442527955,
+        "BLEU-4": 7.43306114738671,
+        "ROUGE-L": 33.33333333333333,
+        "METEOR": 19.658119658119656,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.86
+    },
+    {
+      "video_id": "video7028",
+      "filename": "video7028.mp4",
+      "prediction": "A montage featuring several different scenes, including a man in a green jacket and red scarf standing in front of a building.",
+      "references": [
+        "a boy band sings and dances in front of a chinese pagoda",
+        "the backstreet boys sing in front of a japanese pagoda and in a restaurant",
+        "the singing group the backstreet boys stands in front of a japanese pagoda sing and dance",
+        "a man is singing and walking through the street ",
+        "different shots for a song in front of a temple in shops on street etc sung by three guys"
+      ],
+      "metrics": {
+        "BLEU-1": 59.09090909090909,
+        "BLEU-2": 44.381268229929724,
+        "BLEU-3": 27.041763221944436,
+        "BLEU-4": 17.943677452121126,
+        "ROUGE-L": 35.29411764705882,
+        "METEOR": 43.269230769230774,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.4
+    },
+    {
+      "video_id": "video7029",
+      "filename": "video7029.mp4",
+      "prediction": "A television screen with a cartoon character on it.",
+      "references": [
+        "a cartoon character picks up a phone",
+        "a cartoon character speaks on a phone",
+        "a cartoon squid is using the phone",
+        "animated cartoon scene spongebob",
+        "cartoon show for kids"
+      ],
+      "metrics": {
+        "BLEU-1": 66.66666666666666,
+        "BLEU-2": 40.8248290463863,
+        "BLEU-3": 28.804343827136474,
+        "BLEU-4": 14.113991930789776,
+        "ROUGE-L": 50.0,
+        "METEOR": 51.66666666666667,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.46
+    },
+    {
+      "video_id": "video7034",
+      "filename": "video7034.mp4",
+      "prediction": "A man holding a stuffed animal in front of a wall of comic books.",
+      "references": [
+        "a boy is talking holds a boy toy by its leg and continues to talk",
+        "a man holding a doll upside down and talking about videos",
+        "a tshirt young man talking from a studio",
+        "there is a black tshirt man showing a toy",
+        "a young man makes faces and acts strangly then discusses a selfie"
+      ],
+      "metrics": {
+        "BLEU-1": 71.42857142857143,
+        "BLEU-2": 66.29935441317959,
+        "BLEU-3": 60.3784840663867,
+        "BLEU-4": 53.16967153331754,
+        "ROUGE-L": 62.06896551724138,
+        "METEOR": 59.2841163310962,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.99
+    },
+    {
+      "video_id": "video7035",
+      "filename": "video7035.mp4",
+      "prediction": "A laptop computer sitting on top of a wooden desk.",
+      "references": [
+        "a man is playing world of warcraft with many other players",
+        "the lighting effects are very nice and the cartoon creatures moving nicely",
+        "a world of warcraft player types something into the chat",
+        "there are some different colors light spreading inside a studio ",
+        "there is someone playing a game in a computer"
+      ],
+      "metrics": {
+        "BLEU-1": 60.0,
+        "BLEU-2": 36.514837167011066,
+        "BLEU-3": 11.88161931712681,
+        "BLEU-4": 6.985342056580097,
+        "ROUGE-L": 42.10526315789474,
+        "METEOR": 23.44546381243628,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.66
+    },
+    {
+      "video_id": "video7060",
+      "filename": "video7060.mp4",
+      "prediction": "A montage featuring several different scenes, including a man standing next to a car with smoke coming out of it.",
+      "references": [
+        "a guy extinguishes something then talks into the camera with another guy",
+        "a man extinguishes a fire outside",
+        "a man is puting off the fire",
+        "a person is explaining something",
+        "a person sprayed fire extinguisher on a vehicle"
+      ],
+      "metrics": {
+        "BLEU-1": 40.0,
+        "BLEU-2": 20.51956704170308,
+        "BLEU-3": 6.178716550516438,
+        "BLEU-4": 3.4249460897893136,
+        "ROUGE-L": 23.076923076923077,
+        "METEOR": 34.53453453453454,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.97
+    },
+    {
+      "video_id": "video7061",
+      "filename": "video7061.mp4",
+      "prediction": "A group of fish swimming in a blue pool.",
+      "references": [
+        "in a fish tank two red fishes are playing",
+        "music playing in the background showing fish swiming around",
+        "two orange and white fish are swimming together",
+        "two fishes are moving in a water aquarium",
+        "there are two fish floating in to the water"
+      ],
+      "metrics": {
+        "BLEU-1": 88.88888888888889,
+        "BLEU-2": 66.66666666666666,
+        "BLEU-3": 50.297750552482015,
+        "BLEU-4": 21.448629472025388,
+        "ROUGE-L": 42.10526315789474,
+        "METEOR": 37.87878787878788,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.66
+    },
+    {
+      "video_id": "video7064",
+      "filename": "video7064.mp4",
+      "prediction": "A man sitting at a table in front of a tv.",
+      "references": [
+        "a man is introducing  some new products on the desk",
+        "a white person with black dressing is giving demonstration using big video screen about some product placing on table",
+        "the young man is explaining about the product on the table",
+        "there is a man advertising some products while using a graph",
+        "a computer component reviewer talks aobut the improved performance of a recent upgrade"
+      ],
+      "metrics": {
+        "BLEU-1": 81.81818181818183,
+        "BLEU-2": 49.54336943068623,
+        "BLEU-3": 13.999019344475405,
+        "BLEU-4": 7.641166194509465,
+        "ROUGE-L": 33.333333333333336,
+        "METEOR": 24.658203125000007,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.8
+    },
+    {
+      "video_id": "video7110",
+      "filename": "video7110.mp4",
+      "prediction": "A montage featuring several different scenes, including two people standing in front of a yellow car.",
+      "references": [
+        "a group of many men inspect and test a brand new yellow car",
+        "there is a man  shooting  other people in a corridor",
+        "a man in blue is interviewed on his yellow car",
+        "people are diagnosing problems with a vehicle and being interviewed",
+        "media persons are interviewing engineers in the car factory"
+      ],
+      "metrics": {
+        "BLEU-1": 50.0,
+        "BLEU-2": 25.819888974716115,
+        "BLEU-3": 7.828904129521389,
+        "BLEU-4": 4.3748114312246456,
+        "ROUGE-L": 34.48275862068966,
+        "METEOR": 29.775943396226417,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.03
+    },
+    {
+      "video_id": "video7111",
+      "filename": "video7111.mp4",
+      "prediction": "The sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge sponge.",
+      "references": [
+        "a cartoon about spongebob sqaurepants",
+        "a cartoon snail is talking",
+        "a cartoon snail sings",
+        "a cartoon video for kids",
+        "a clip the the cartoon spongebob squarepants"
+      ],
+      "metrics": {
+        "BLEU-1": 6.666666666666667,
+        "BLEU-2": 1.5161960871578066,
+        "BLEU-3": 0.9407613204155689,
+        "BLEU-4": 0.7425868202031368,
+        "ROUGE-L": 5.88235294117647,
+        "METEOR": 10.75268817204301,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.34
+    },
+    {
+      "video_id": "video7112",
+      "filename": "video7112.mp4",
+      "prediction": "A montage featuring several different scenes, including a group of people playing basketball in a park.",
+      "references": [
+        "men outside playing basketball one of the men keeps missing the basket",
+        "a couple of guys are shooting basketballs  and they missed the basket each time",
+        "a man in black playing with a ball",
+        "there is a man in black is throwing a ball",
+        "there is a man throwing ball to the basket"
+      ],
+      "metrics": {
+        "BLEU-1": 56.25,
+        "BLEU-2": 43.30127018922193,
+        "BLEU-3": 29.95654866672431,
+        "BLEU-4": 21.305413619585085,
+        "ROUGE-L": 50.0,
+        "METEOR": 54.22975641869652,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.4
+    },
+    {
+      "video_id": "video7113",
+      "filename": "video7113.mp4",
+      "prediction": "A montage featuring several different scenes, including a white bird sitting on top of a cardboard box.",
+      "references": [
+        "there is a dove sitting inside the house",
+        "a white parrot is pecking its feathers and girl approaches it",
+        "a bird white color is dancing",
+        "a bird is chirping along its new home the bird looks terrified",
+        "i see and bird scratching itself and chirping at the same time"
+      ],
+      "metrics": {
+        "BLEU-1": 58.82352941176471,
+        "BLEU-2": 27.116307227332026,
+        "BLEU-3": 17.01739792420182,
+        "BLEU-4": 7.692375026049747,
+        "ROUGE-L": 37.03703703703704,
+        "METEOR": 41.68224299065421,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.87
+    },
+    {
+      "video_id": "video7114",
+      "filename": "video7114.mp4",
+      "prediction": "A montage featuring several different scenes, including a man standing in front of two windows.",
+      "references": [
+        "a girl and a man are talking to each other",
+        "a girl helps a man detective prevent crimes",
+        "a man and a woman talking to each other",
+        "a man and woman are seriously discussing about something",
+        "a man speaks to a woman in a doorway"
+      ],
+      "metrics": {
+        "BLEU-1": 46.666666666666664,
+        "BLEU-2": 18.257418583505537,
+        "BLEU-3": 6.370528835837831,
+        "BLEU-4": 3.8233014078303,
+        "ROUGE-L": 28.571428571428577,
+        "METEOR": 40.4647435897436,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.04
+    },
+    {
+      "video_id": "video7115",
+      "filename": "video7115.mp4",
+      "prediction": "A montage featuring several different scenes, including two people in a suit talking to another man in a suit.",
+      "references": [
+        "a man describes a good vehicle at a car show",
+        "a man explains a vehicle",
+        "a man in a showroom standing in front of a black suv",
+        "a man is describing a vehicle",
+        "a man is describing a vehicle and laughs about making a mistake"
+      ],
+      "metrics": {
+        "BLEU-1": 36.84210526315789,
+        "BLEU-2": 20.232565955562798,
+        "BLEU-3": 13.430446517349019,
+        "BLEU-4": 6.228496954013448,
+        "ROUGE-L": 32.25806451612903,
+        "METEOR": 33.57392825896763,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.79
+    },
+    {
+      "video_id": "video7116",
+      "filename": "video7116.mp4",
+      "prediction": "A montage featuring several different scenes, including a man is walking down the street in a city.",
+      "references": [
+        "a female being chastised by a militant for not wearing gloves",
+        "a group of people are walking a woman is talking about their culture",
+        "a group of people outside walking that appear to be muslim",
+        "a group of people walking in a busy street",
+        "a group of traditional dressed muslims are filmed before a woman is interviewed"
+      ],
+      "metrics": {
+        "BLEU-1": 47.05882352941176,
+        "BLEU-2": 24.253562503633297,
+        "BLEU-3": 7.338750448302671,
+        "BLEU-4": 4.091032653880249,
+        "ROUGE-L": 30.769230769230766,
+        "METEOR": 41.21863799283154,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.98
+    },
+    {
+      "video_id": "video7117",
+      "filename": "video7117.mp4",
+      "prediction": "A group of people dancing on a beach.",
+      "references": [
+        "a group dancing together",
+        "a group of kids dancing and singing on sand",
+        "a group of kids is dancing and singing on a beach",
+        "a group of people are dancing on the beach",
+        "a group of people are dancing on the beach"
+      ],
+      "metrics": {
+        "BLEU-1": 100.0,
+        "BLEU-2": 100.0,
+        "BLEU-3": 94.10932210034986,
+        "BLEU-4": 75.98356856515926,
+        "ROUGE-L": 88.8888888888889,
+        "METEOR": 84.0561224489796,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.69
+    },
+    {
+      "video_id": "video7118",
+      "filename": "video7118.mp4",
+      "prediction": "A montage featuring several different scenes, including a woman sitting in a bed next to a lamp.",
+      "references": [
+        "a clip from a movie is playing",
+        "a girl in bed knocking on the wall",
+        "a girl in bed",
+        "a girl is knocking on the wall",
+        "a girl knocking on a wall"
+      ],
+      "metrics": {
+        "BLEU-1": 52.94117647058824,
+        "BLEU-2": 36.38034375544994,
+        "BLEU-3": 26.07005137441185,
+        "BLEU-4": 10.595856656484553,
+        "ROUGE-L": 43.47826086956522,
+        "METEOR": 52.3943661971831,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.74
+    },
+    {
+      "video_id": "video7119",
+      "filename": "video7119.mp4",
+      "prediction": "A montage featuring several different scenes, including a news set with a news anchor and a news anchor.",
+      "references": [
+        "on abc news a burst of light over carlsbad is being discussed",
+        "a news show about an explosion or burst of light in san diego",
+        "two news anchors opening a story about a mysterious light in the sky in san diego",
+        "a male and female newscaster are talking about a strange burst of light",
+        "a woman in a dress and a man in a suit are talking about a bright light that was seen in the sky"
+      ],
+      "metrics": {
+        "BLEU-1": 50.0,
+        "BLEU-2": 29.70442628930023,
+        "BLEU-3": 8.221043462688293,
+        "BLEU-4": 4.378826865860795,
+        "ROUGE-L": 34.146341463414636,
+        "METEOR": 26.976495726495724,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.92
+    },
+    {
+      "video_id": "video7131",
+      "filename": "video7131.mp4",
+      "prediction": "A group of people standing on top of a red track.",
+      "references": [
+        "athletes are getting ready and start running for an event",
+        "members of a highschool track and field team compete in a foot race",
+        "sprinters line up in their blocks and then run a race",
+        "the athletes gets off the starting point once the referee shots the final shot",
+        "a segment of an athletic racing is displayed"
+      ],
+      "metrics": {
+        "BLEU-1": 63.63636363636363,
+        "BLEU-2": 43.69314487526515,
+        "BLEU-3": 27.717401021643507,
+        "BLEU-4": 12.760671487807073,
+        "ROUGE-L": 41.666666666666664,
+        "METEOR": 33.81818181818182,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 0.98
+    },
+    {
+      "video_id": "video7134",
+      "filename": "video7134.mp4",
+      "prediction": "A group of children sitting in a classroom.",
+      "references": [
+        "a class answering questions about an ebook",
+        "a class is being introduced to a digital reading device",
+        "a classroom of african students",
+        "a group of kids using a ereader",
+        "a group of students listen to a woman describe a reading tablet"
+      ],
+      "metrics": {
+        "BLEU-1": 100.0,
+        "BLEU-2": 84.51542547285166,
+        "BLEU-3": 49.22831804493061,
+        "BLEU-4": 22.089591134157885,
+        "ROUGE-L": 53.333333333333336,
+        "METEOR": 68.16901408450705,
+        "CIDEr": 0.33
+      },
+      "latency_seconds": 1.01
+    }
+  ]
+}
